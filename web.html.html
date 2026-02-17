@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebCraft Pro - Custom Website Orders</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="logo">
+            <span class="logo-icon"><i class="fas fa-bolt"></i></span>
+            <span class="logo-text">WebCraft<span class="highlight">Pro</span></span>
+        </div>
+        <div class="nav-links">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#process" class="nav-link">Process</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="nav-auth" id="navAuth">
+            <button class="btn btn-outline" onclick="showLoginModal()">Login</button>
+            <button class="btn btn-primary" onclick="showRegisterModal()">Get Started</button>
+        </div>
+        <div class="nav-user" id="navUser" style="display: none;">
+            <span class="user-greeting">Hello, <span id="userName">User</span></span>
+            <button class="btn btn-outline" onclick="logout()">Logout</button>
+        </div>
+        <div class="menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <div class="particles" id="particles"></div>
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">Build Your</span>
+                <span class="title-line gradient-text">Dream Website</span>
+            </h1>
+            <p class="hero-subtitle">Professional custom websites delivered within 24 hours. Tell us your vision, we'll bring it to life.</p>
+            <div class="hero-cta">
+                <button class="btn btn-primary btn-large" onclick="scrollToOrder()">
+                    <span>Start Your Project</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="btn btn-outline btn-large" onclick="showPortfolio()">
+                    <i class="fas fa-play"></i>
+                    <span>View Portfolio</span>
+                </button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="500">0</span>
+                    <span class="stat-label">Websites Delivered</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="24">0</span>
+                    <span class="stat-label">Hour Delivery</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="98">0</span>
+                    <span class="stat-label">% Satisfaction</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator" onclick="scrollToServices()">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <h2 class="section-title">Our <span class="gradient-text">Services</span></h2>
+            <p class="section-subtitle">Choose the perfect website type for your business</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card" data-tilt>
+                <div class="service-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <h3>E-Commerce</h3>
+                <p>Full-featured online store with payment gateway, inventory management, and more.</p>
+                <div class="service-price">Starting at $299</div>
+                <button class="btn btn-service" onclick="selectService('ecommerce')">Select</button>
+            </div>
+            <div class="service-card" data-tilt>
+                <div class="service-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3>Business Website</h3>
+                <p>Professional corporate website with about us, services, and contact pages.</p>
+                <div class="service-price">Starting at $149</div>
+                <button class="btn btn-service" onclick="selectService('business')">Select</button>
+            </div>
+            <div class="service-card" data-tilt>
+                <div class="service-icon">
+                    <i class="fas fa-blog"></i>
+                </div>
+                <h3>Blog & Portfolio</h3>
+                <p>Beautiful blog or portfolio website to showcase your work and thoughts.</p>
+                <div class="service-price">Starting at $99</div>
+                <button class="btn btn-service" onclick="selectService('blog')">Select</button>
+            </div>
+            <div class="service-card" data-tilt>
+                <div class="service-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3>Restaurant</h3>
+                <p>Stunning restaurant website with menu, reservations, and online ordering.</p>
+                <div class="service-price">Starting at $179</div>
+                <button class="btn btn-service" onclick="selectService('restaurant')">Select</button>
+            </div>
+            <div class="service-card" data-tilt>
+                <div class="service-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Educational</h3>
+                <p>Online learning platform with courses, quizzes, and student management.</p>
+                <div class="service-price">Starting at $349</div>
+                <button class="btn btn-service" onclick="selectService('educational')">Select</button>
+                <div class="card-glow"></div>
+            </div>
+            <div class="service-card" data-tilt>
+                <div class="service-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>Custom Project</h3>
+                <p>Unique website tailored to your specific requirements and vision.</p>
+                <div class="service-price">Custom Quote</div>
+                <button class="btn btn-service" onclick="selectService('custom')">Select</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="section-header">
+            <h2 class="section-title">How It <span class="gradient-text">Works</span></h2>
+            <p class="section-subtitle">Simple 4-step process to get your website</p>
+        </div>
+        <div class="process-timeline">
+            <div class="process-step" data-delay="0">
+                <div class="step-number">01</div>
+                <div class="step-content">
+                    <h3>Create Account</h3>
+                    <p>Sign up with your Gmail and create a secure password to get started.</p>
+                </div>
+                <div class="step-connector"></div>
+            </div>
+            <div class="process-step" data-delay="1">
+                <div class="step-number">02</div>
+                <div class="step-content">
+                    <h3>Describe Your Vision</h3>
+                    <p>Fill out our detailed form with your website requirements and preferences.</p>
+                </div>
+                <div class="step-connector"></div>
+            </div>
+            <div class="process-step" data-delay="2">
+                <div class="step-number">03</div>
+                <div class="step-content">
+                    <h3>We Build It</h3>
+                    <p>Our expert team designs and develops your website within 24 hours.</p>
+                </div>
+                <div class="step-connector"></div>
+            </div>
+            <div class="process-step" data-delay="3">
+                <div class="step-number">04</div>
+                <div class="step-content">
+                    <h3>Launch & Enjoy</h3>
+                    <p>Receive your completed website and go live with your online presence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section class="order-section" id="orderSection">
+        <div class="section-header">
+            <h2 class="section-title">Place Your <span class="gradient-text">Order</span></h2>
+            <p class="section-subtitle">Tell us about your dream website</p>
+        </div>
+        <div class="order-container">
+            <form class="order-form" id="orderForm" onsubmit="submitOrder(event)">
+                <div class="form-section">
+                    <h3><i class="fas fa-user"></i> Personal Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="+1 234 567 8900">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3><i class="fas fa-globe"></i> Website Details</h3>
+                    <div class="form-group">
+                        <label for="websiteName">Website Name/Company Name *</label>
+                        <input type="text" id="websiteName" name="websiteName" required placeholder="My Awesome Company">
+                    </div>
+                    <div class="form-group">
+                        <label for="websiteType">Website Type *</label>
+                        <select id="websiteType" name="websiteType" required>
+                            <option value="">Select website type</option>
+                            <option value="ecommerce">E-Commerce Website</option>
+                            <option value="business">Business/Corporate Website</option>
+                            <option value="blog">Blog/Portfolio</option>
+                            <option value="restaurant">Restaurant Website</option>
+                            <option value="educational">Educational Platform</option>
+                            <option value="custom">Custom Project</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="businessDescription">What does your business do? *</label>
+                        <textarea id="businessDescription" name="businessDescription" rows="3" required placeholder="Describe your business in detail..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="targetAudience">Who is your target audience?</label>
+                        <input type="text" id="targetAudience" name="targetAudience" placeholder="e.g., Young professionals, Small business owners">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3><i class="fas fa-palette"></i> Design Preferences</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="colorScheme">Preferred Color Scheme</label>
+                            <select id="colorScheme" name="colorScheme">
+                                <option value="professional">Professional Blue/Navy</option>
+                                <option value="modern">Modern Black & White</option>
+                                <option value="creative">Creative & Colorful</option>
+                                <option value="nature">Nature & Green</option>
+                                <option value="luxury">Luxury Gold & Black</option>
+                                <option value="custom">Custom Colors</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="designStyle">Design Style</label>
+                            <select id="designStyle" name="designStyle">
+                                <option value="minimal">Minimal & Clean</option>
+                                <option value="bold">Bold & Impactful</option>
+                                <option value="elegant">Elegant & Sophisticated</option>
+                                <option value="playful">Playful & Fun</option>
+                                <option value="tech">Tech & Modern</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Features You Need (Select all that apply)</label>
+                        <div class="checkbox-grid">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="features" value="contact-form">
+                                <span class="checkbox-custom"></span>
+                                <i class="fas fa-envelope"></i> Contact Form
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="features" value="gallery">
+                                <span class="checkbox-custom"></span>
+                                <i class="fas fa-images"></i> Image Gallery
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="features" value="blog">
+                                <span class="checkbox-custom"></span>
+                                <i class="fas fa-blog"></i> Blog Section
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="features" value="ecommerce">
+                                <span class="checkbox-custom"></span>
+                                <i class="fas fa-shopping-cart"></i> E-Commerce
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="features" value="booking">
+                                <span class="checkbox-custom"></span>
+                                <i class="fas fa-calendar"></i> Booking System
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="features" value="chat">
+                                <span class="checkbox-custom"></span>
+                                <i class="fas fa-comments"></i> Live Chat
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="features" value="seo">
+                                <span class="checkbox-custom"></span>
+                                <i class="fas fa-search"></i> SEO Optimization
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="features" value="responsive">
+                                <span class="checkbox-custom"></span>
+                                <i class="fas fa-mobile-alt"></i> Mobile Responsive
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3><i class="fas fa-align-left"></i> Additional Requirements</h3>
+                    <div class="form-group">
+                        <label for="additionalInfo">Anything else you'd like to add?</label>
+                        <textarea id="additionalInfo" name="additionalInfo" rows="4" placeholder="Tell us more about your vision, specific pages, content, or any special requirements..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="deadline">Preferred Deadline</label>
+                        <select id="deadline" name="deadline">
+                            <option value="24hours">Within 24 Hours</option>
+                            <option value="48hours">Within 48 Hours</option>
+                            <option value="72hours">Within 72 Hours</option>
+                            <option value="week">Within a Week</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-submit">
+                    <button type="submit" class="btn btn-primary btn-large">
+                        <span>Submit Order</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Order Confirmation Modal -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <div class="success-animation">
+                <div class="success-circle">
+                    <i class="fas fa-check"></i>
+                </div>
+                <div class="success-glow"></div>
+            </div>
+            <h2>Order Placed Successfully!</h2>
+            <p class="order-id">Order ID: <span id="orderId">#WCP-0000</span></p>
+            <div class="delivery-timer">
+                <div class="timer-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="timer-content">
+                    <h3>Expected Delivery</h3>
+                    <p class="timer-countdown" id="countdown">24:00:00</p>
+                </div>
+            </div>
+            <div class="delivery-message">
+                <p>🎉 Your website is being crafted with care!</p>
+                <p>We'll deliver your custom website within <strong>24 hours</strong></p>
+            </div>
+            <button class="btn btn-primary" onclick="closeOrderModal()">Awesome! Thanks</button>
+        </div>
+    </div>
+
+    <!-- Auth Modals -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content auth-modal">
+            <button class="modal-close" onclick="closeLoginModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="auth-header">
+                <h2>Welcome Back!</h2>
+                <p>Login to continue</p>
+            </div>
+            <form class="auth-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="loginEmail">Gmail Address</label>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="loginEmail" required placeholder="yourname@gmail.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="loginPassword" required placeholder="Enter your password">
+                        <button type="button" class="password-toggle" onclick="togglePassword('loginPassword')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">
+                    <span>Login</span>
+                    <i class="fas fa-sign-in-alt"></i>
+                </button>
+            </form>
+            <div class="auth-footer">
+                <p>Don't have an account? <a href="#" onclick="switchToRegister()">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="registerModal">
+        <div class="modal-content auth-modal">
+            <button class="modal-close" onclick="closeRegisterModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="auth-header">
+                <h2>Create Account</h2>
+                <p>Join us and start building</p>
+            </div>
+            <form class="auth-form" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label for="registerName">Full Name</label>
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="registerName" required placeholder="John Doe">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Gmail Address</label>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="registerEmail" required placeholder="yourname@gmail.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="registerPassword" required placeholder="Create a strong password" minlength="8">
+                        <button type="button" class="password-toggle" onclick="togglePassword('registerPassword')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirm">Confirm Password</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="registerConfirm" required placeholder="Confirm your password">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">
+                    <span>Create Account</span>
+                    <i class="fas fa-user-plus"></i>
+                </button>
+            </form>
+            <div class="auth-footer">
+                <p>Already have an account? <a href="#" onclick="switchToLogin()">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-icon"><i class="fas fa-bolt"></i></span>
+                <span class="logo-text">WebCraft<span class="highlight">Pro</span></span>
+            </div>
+            <p class="footer-tagline">Building dreams, one website at a time.</p>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p class="footer-copyright">&copy; 2024 WebCraft Pro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
